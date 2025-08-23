@@ -11,7 +11,7 @@ const workSans = Work_Sans({
 
 
 export const metadata: Metadata = {
-  title: "Create Next App",
+  title: "Figma Clone",
   description: "a minimalist figma clone using fabric.js and liveblocks for realtime collaboration",
 };
 
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${workSans.variable} bg-primary-gray-200 antialiased`}
+        className={`${workSans.variable} bg-primary antialiased`}
       >
         <Room>
         {children}
