@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import LiveCursor from './cursor/LiveCursor';
 import { useMyPresence, useOthers } from '@liveblocks/react';
 import CursorChat from './cursor/CursorChat';
-import { CursorMode } from '@/types/type';
+import { CursorMode ,CursorState} from '@/types/type';
 import { useState } from 'react';
 const Live = () => {
     const others=useOthers();
@@ -36,7 +36,7 @@ const Live = () => {
     <div onPointerMove={handlePointerMove} onPointerLeave={handlePointerLeave} onPointerDown={handlePointerDown}
     className=' h-[100vh] w-full flex justify-center items-center text-center'>
         <h1 className='text-white'> figma clone</h1>
-        {cursor && (< CursorChat cursor={cursor}/>)}
+        {cursor && (< CursorChat cursor={cursor} cursorState={cursorState} setCursorState={setCursorState} updateMyPresence={updateMyPresence}/>)}
         <LiveCursor others={others}/>
     </div>
   )

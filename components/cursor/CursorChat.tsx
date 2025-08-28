@@ -1,12 +1,31 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-const CursorChat = props => {
+import { CursorChatProps, CursorMode,CursorState } from '@/types/type'
+import CursorSVG from '@/public/assets/CursorSVG'
+
+// {CursorState.mode===CursorMode.chat && (<>
+// </>)}
+const CursorChat = ({cursor,cursorState,setCursorState,updateMyPresence}:CursorChatProps) => {
+  const handleChange=(event:React.ChangeEvent<HTMLInputElement>)=>{
+    
+  }
   return (
-    <div>CursorChat</div>
+    <div className='absolute top-0 left-0 ' style={{transform:`translatex(${cursor.x}px) translateY(${cursor.y}px)`}}>
+
+        <CursorSVG color="#000"/>
+        <div className='absolute left-2 top-5 bg-blue-500 px-4 py-2 text-sm leading-relaxed text-white rounded-[20px]'>
+          {cursorState.previousMessage && (<div>
+              {cursorState.previousMessage}
+            </div>)}
+            <input
+              className='z-10 w-60 border-none bg-transparent text-white placeholder-blue-300 outline-none'
+              autoFocus={true}
+            />
+        </div>
+    </div>
   )
 }
 
-CursorChat.propTypes = {}
+
 
 export default CursorChat
