@@ -6,7 +6,7 @@ import { CursorMode, CursorState, Reaction, ReactionEvent } from "@/types/type";
 import ReactionSelector from "./reaction/ReactionButton";
 import FlyingReaction from "./reaction/FlyingReaction";
 import useInterval from "@/hooks/useInterval";
-import { timeStamp } from "console";
+
 
 const Live = () => {
   const others = useOthers();
@@ -17,6 +17,12 @@ const Live = () => {
   });
   const [reaction, setReaction] = useState<Reaction[]>([]);
   const broadCast=useBroadcastEvent();
+
+  useInterval(()=>{
+    setReaction((reactions)=>reactions.filter((r)=>{
+         
+  }))
+  },1000)
 
   useInterval(() => {
     if (
@@ -46,8 +52,8 @@ const Live = () => {
     setReaction((reactions) =>
       reactions.concat([
         {
-          point: { x: cursor.x, y: cursor.y },
-          value: cursorState.value,
+          point: { x: event.x, y: event.y },
+          value: event.value,
           timestamp: Date.now(),
         },
       ])
@@ -132,6 +138,7 @@ const Live = () => {
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [updateMyPresence]);
+
   const setReactions = useCallback((reaction: string) => {
     setCursorState({
       mode: CursorMode.Reaction,
