@@ -1,13 +1,17 @@
 "use client"
 import Live from "@/components/Live";
-import { Room } from "./Room";
+
+import NavBar from "@/components/NavBar";
 
 
 export default function Page() {
   return (
-    <div className="">
+    <main className="h-screen overflow-hidden">
         {/* <h1 className="text-white text-8xl">figma clone </h1> */}
-        <Live/>
-    </div>
+        <NavBar/>
+        <section className="flex h-full flex-row">
+          <Live/>
+        </section>
+    </main>
   );
 }

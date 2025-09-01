@@ -1,32 +1,39 @@
 import { useOthers,useSelf } from "@liveblocks/react";
 import { Avatar } from "./Avatar";
-import styles from './Index.module.css'
+import styles from './Index.module.css';
+import { LockKeyhole } from "lucide-react";
+import { generateRandomName } from "@/lib/utils";
+import { useMemo } from "react";
 
 const ActiveUsers=()=> {
     const users = useOthers();
     const currentUser = useSelf();
     const hasMoreUsers = users.length > 3;
-  
-    return (
-      <main className="flex h-screen w-full select-none place-content-center place-items-center">
+
+    const memoizedUsers=useMemo(()=>{
+      return (
+        <div className="flex items-center justify-center gap-1">
         <div className="flex pl-3">
-          {users.slice(0, 3).map(({ connectionId, info }) => {
-            return (
-              <Avatar key={connectionId} src={info.avatar} name={info.name} />
-            );
-          })}
-  
-          {hasMoreUsers && <div className={styles.more}>+{users.length - 3}</div>}
-  
-          {currentUser && (
+        {currentUser && (
             <div className="relative ml-8 first:ml-0">
-              <Avatar src={currentUser.info.avatar} name="You" />
+              <Avatar otherStyles="border-[3px] border-primary-green" name="You" />
             </div>
           )}
+
+          {users.slice(0, 3).map(({ connectionId, info }) => {
+            return (
+              <Avatar key={connectionId}  name={generateRandomName()}  otherStyles="-ml-3"/>
+            );
+          })}
+          {hasMoreUsers && <div className={styles.more}>+{users.length - 3}</div>}
+  
+          
         </div>
-      </main>
-    );
+      </div>
+      )
+    },[users.length])
+
+    return memoizedUsers
   }
-
-
+   
   export default ActiveUsers;

@@ -1,9 +1,20 @@
-import React from 'react'
+"use client";
+import Image from 'next/image';
+import {memo} from "react";
 
-const NavBar = () => {
+import ActiveUsers from './users/ActiveUsers';
+import React from 'react'
+import { NavbarProps } from '@/types/type';
+
+
+const NavBar = ({activeElement}:NavbarProps) => {
   return (
-    <div>NavBar</div>
+    <nav className='flex select-none items-center justify-between gap-4 bg-primary-black px-5 text-white'>
+        <Image src="/assets/logo.svg" alt='FigPro Logo' width={58} height={20}/>
+        <ActiveUsers/>
+    </nav>
   )
 }
 
-export default NavBar
+export default memo(NavBar,(prevProps,nextProps)=>
+    prevProps.activeElement===nextProps.activeElement);
