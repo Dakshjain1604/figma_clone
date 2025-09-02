@@ -16,3 +16,5 @@ export function Avatar({ name ,otherStyles}: { otherStyles: string; name: string
     </div>
   );
 }
+
+//
