@@ -1,5 +1,6 @@
-import { fabric } from "fabric";
+import * as fabric  from "fabric";
 import { v4 as uuidv4 } from "uuid";
+import type { Rect, Triangle, Circle, Line, IText } from "fabric/fabric-impl";
 
 import {
   CustomFabricObject,
