@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import LiveCursor from "./cursor/LiveCursor";
+import LiveCursor from "./cursor/LiveCursors";
 import { useBroadcastEvent, useEventListener, useMyPresence, useOthers } from "@liveblocks/react";
 import CursorChat from "./cursor/CursorChat";
 import { CursorMode, CursorState, Reaction, ReactionEvent } from "@/types/type";
